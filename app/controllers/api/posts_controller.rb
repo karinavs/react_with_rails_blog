@@ -1,5 +1,5 @@
-class Api::PostsController < ApplicationController
 
+class Api::PostsController < ApplicationController
   def index
     render json: Post.all
   end
@@ -26,9 +26,11 @@ class Api::PostsController < ApplicationController
     Post.find(params[:id]).destroy
     render json: { message: 'post deleted'}
   end
-  
+
   private
+
     def post_params
+      # { post: {title: 'cats', body: 'are cool'} }
       params.require(:post).permit(:title, :body)
     end
 end
